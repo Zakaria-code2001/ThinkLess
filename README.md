@@ -1,6 +1,6 @@
-# 🚀 Productivity App: AI Meets Microservices!
+# 🚀 Thinking Buddy: AI Meets Microservices! 
 
-Welcome to the **Productivity App**! This is not just another productivity tool—it’s your AI-powered personal assistant, built with cutting-edge **microservices architecture** for maximum scalability and flexibility.
+Welcome to **Thinking Buddy**! This is not just another productivity tool—it’s your AI-powered personal assistant, built with cutting-edge **microservices architecture** for maximum scalability and flexibility.
 
 Whether you're tackling tasks, jotting down ideas, or optimizing your daily routine, this app has your back with features powered by **Node.js**, **Python**, **TypeScript**, and **Azure AI Services** with the help of the one and only **Github Copilot**.
 
@@ -30,7 +30,7 @@ Whether you're tackling tasks, jotting down ideas, or optimizing your daily rout
 
 ## 📊 System Design  
 
-Below is the architecture of our Productivity App, showcasing its microservices design and integrations:
+Below is the architecture of our Thinking Buddy app, showcasing its microservices design and integrations:
 
 ![System Design](assets/system-design.webp)
 
@@ -41,6 +41,7 @@ Below is the architecture of our Productivity App, showcasing its microservices 
 This app brings together a powerful combination of tools and frameworks:  
 - **Node.js**: Backend magic for seamless service handling.  
 - **Python**: For AI-powered functionalities and machine learning models.  
+- **TypeScript**: Adding strong typing and modern JavaScript development practices to the mix.  
 - **Azure AI Services**: Advanced AI integrations to elevate user experience.  
 
 ---
@@ -63,3 +64,4 @@ We’re just getting started! Future updates may include:
 ---
 
 💻✨
+![🌟🌟](<assets/DALL·E 2024-12-17 09.53.47 - A simple and clean flow chart representing a Productivity App with Microservices Architecture. The flow chart includes several independent microservic.png>)
