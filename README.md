@@ -1,65 +1,101 @@
-# 🚀 Thinking Buddy: AI Meets Microservices! 
+# 🚀 **ProductivityAI**: Suite di Produttività Potenziata dall'AI
 
-Welcome to **Thinking Buddy**! This is not just another productivity tool—it’s your AI-powered personal assistant, built with cutting-edge **microservices architecture** for maximum scalability and flexibility.
+Un assistente personale intelligente costruito con un'architettura a microservizi, che combina la potenza di Node.js, Python e Azure AI Services per migliorare la tua produttività quotidiana.
 
-Whether you're tackling tasks, jotting down ideas, or optimizing your daily routine, this app has your back with features powered by **Node.js**, **Python**, **TypeScript**, and **Azure AI Services** with the help of the one and only **Github Copilot**.
+## 🌟 Caratteristiche Principali
+
+### 📝 Servizio To-Do List
+
+```typescript
+// Esempio di utilizzo
+const todoService = new TodoService();
+await todoService.generateAITaskList("Prepararsi per una presentazione");
+```
+
+- Gestione intuitiva delle attività
+- Generazione intelligente di liste personalizzate tramite LLM
+
+### ✍️ Servizio Note
+
+```python
+# Esempio di conversione audio-testo
+from services.note import NoteService
+
+note_service = NoteService()
+text = note_service.convert_audio_to_text("registrazione.mp3")
+```
+
+- Completamento automatico basato su AI
+- Conversione audio-testo per note vocali
+
+### ⏰ Servizio Routine
+
+- Creazione manuale di routine giornaliere/settimanali
+- Suggerimenti AI per ottimizzare la tua pianificazione
+
+### 💡 Servizio Citazioni Giornaliere
+
+```javascript
+// Esempio di ottenimento di una citazione
+const quoteService = new QuoteService();
+const dailyQuote = await quoteService.getDailyQuote();
+```
+
+- Citazioni motivazionali generate da LLM
+
+### ⏱️ Servizio Pomodoro
+
+- Timer Pomodoro personalizzabile
+- Musica di sottofondo generata da AI
+
+## 🛠️ Stack Tecnologico
+
+- **Backend**: Node.js, Python
+- **Frontend**: TypeScript, React
+- **AI**: Azure AI Services
+- **Database**: Cosmos DB o Azure PostgreSQL
+- **Messaggistica**: RabbitMQ
+
+## 🏗️ Architettura
+
+```plaintext
+[App Client] ←→ [API Gateway]
+      ↓
+[Microservizi]
+ - TodoService
+ - NoteService
+ - RoutineService
+ - QuoteService
+ - PomodoroService
+```
+
+## 🚀 Come Iniziare
+
+```bash
+# Clona il repository
+git clone https://github.com/tuouser/ProductivityAI
+
+# Installa le dipendenze
+npm install
+
+# Avvia in modalità sviluppo
+npm run dev
+```
+
+## 📈 Sviluppi Futuri
+
+- Collaborazione in tempo reale
+- Integrazione con Google Calendar
+- Elementi di gamification
+- API pubblica per integrazioni di terze parti
+
+## 📄 Licenza
+
+MIT License - vedi LICENSE per i dettagli.
 
 ---
 
-## 🌟 Core Features  
-
-### 📝 To-Do List Service  
-- Keep it simple with a user-friendly to-do list.  
-- Feeling overwhelmed? Let our AI generate **personalized task lists** based on your goals.  
-
-### ✍️ Note Service  
-- Take traditional notes or brainstorm effortlessly with **AI-powered autocomplete**.  
-- **Audio-to-Text:** Convert your voice recordings into notes—perfect for hands-free productivity! *(coming soon)*
-
-### 🕒 Routine Service  
-- Build daily or weekly routines manually, or let AI suggest **optimized schedules** tailored to your preferences.  
-
-### 💡 Daily Quotes Service  
-- Start your day with **motivational quotes**, powered by large language models (LLMs), to keep you inspired.  
-
-### ⏱️ Pomodoro Service  
-- Boost productivity with a customizable **Pomodoro timer**.  
-- Enhance your focus with AI-generated **study music** or ambient sounds during your work sessions.  
-
----
-
-## 📊 System Design  
-
-Below is the architecture of our Thinking Buddy app, showcasing its microservices design and integrations:
-
-![System Design](assets/system-design.webp)
-
----
-
-## ⚙️ Tech Stack  
-
-This app brings together a powerful combination of tools and frameworks:  
-- **Node.js**: Backend magic for seamless service handling.  
-- **Python**: For AI-powered functionalities and machine learning models.  
-- **TypeScript**: Adding strong typing and modern JavaScript development practices to the mix.  
-- **Azure AI Services**: Advanced AI integrations to elevate user experience.  
-
----
-
-## 🎉 Why You'll Love This App  
-
-- Modular microservices: Every feature is independent, ensuring smooth scalability and updates.  
-- AI at your service: From personalized task lists to motivational quotes, it's all about **you**.  
-- Stay focused, stay inspired, stay productive.  
-
----
-
-## 🚧 What's Next  
-
-We’re just getting started! Future updates may include:  
-- Collaborative features to share tasks and notes.  
-- Integration with popular calendars like Google Calendar.  
-- Gamification elements to make productivity even more rewarding!  
+🌟 **Contribuisci al progetto!** Apri una Issue o una Pull Request per suggerimenti e miglioramenti.
 
 ---
 
