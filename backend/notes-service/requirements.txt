@@ -1,0 +1,6 @@
+azure-functions
+flask
+psycopg2-binary
+sqlalchemy
+python-dotenv
+requests
