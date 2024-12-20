@@ -54,7 +54,6 @@ const dailyQuote = await quoteService.getDailyQuote();
 - **Frontend**: TypeScript, React
 - **AI**: Azure AI Services
 - **Database**: Cosmos DB or Azure PostgreSQL
-- **Messaging**: RabbitMQ
 
 ## 🏗️ Architecture
 
