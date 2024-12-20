@@ -34,7 +34,7 @@ An intelligent personal assistant built with a microservices architecture, combi
 - **Backend**: Node.js, Python
 - **Frontend**: TypeScript, React
 - **AI**: Azure AI Services
-- **Database**: Cosmos DB or Azure PostgreSQL
+- **Database**: Cosmos DB, Redis, Azure PostgreSQL
 
 ## 🏗️ Architecture
 
