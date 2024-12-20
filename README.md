@@ -31,9 +31,9 @@ An intelligent personal assistant built with a microservices architecture, combi
 
 ## 🛠️ Tech Stack
 
-- **Backend**: Node.js, Python
+- **Backend**: Node.js, Python, Azure Functions
 - **Frontend**: TypeScript, React
-- **AI**: Azure AI Services
+- **AI**: Groq API
 - **Database**: Cosmos DB, Redis, Azure PostgreSQL
 
 ## 🏗️ Architecture
