@@ -1,0 +1,13 @@
+swagger: "2.0"
+info:
+  title: "Notes API"
+  description: "API per gestire le note"
+  version: "1.0.0"
+host: "localhost:7071"
+basePath: "/"
+schemes:
+  - "http"
+  - "https"
+tags:
+  - name: "Notes"
+    description: "Operazioni sulle note"

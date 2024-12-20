@@ -1,5 +1,5 @@
-azure-functions
 flask
+flasgger
 psycopg2-binary
 sqlalchemy
 python-dotenv
