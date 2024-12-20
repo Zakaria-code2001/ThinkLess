@@ -58,16 +58,8 @@ const dailyQuote = await quoteService.getDailyQuote();
 
 ## 🏗️ Architecture
 
-```plaintext
-[Client App] ←→ [API Gateway]
-      ↓
-[Microservices]
- - TodoService
- - NoteService
- - RoutineService
- - QuoteService
- - PomodoroService
-```
+![Azure (2019) framework](https://github.com/user-attachments/assets/b15d956e-3cfa-4169-9a29-979516ac48b0)
+
 
 ## 🚀 Getting Started
 
