@@ -1,0 +1,22 @@
+services:
+  api_gateway:
+    build:
+      context: ./api_gateway
+    ports:
+      - "8000:8000"
+
+  notes-service:
+    build:
+      context: ./notes-service
+    environment:
+      - DATABASE_URL=sqlite:///notes.db
+    ports:
+      - "8001:8001"
+
+  todo-service:
+    build:
+      context: ./TodoService
+    environment:
+      - DATABASE_URL=sqlite:///todos.db
+    ports:
+      - "8002:8002"
