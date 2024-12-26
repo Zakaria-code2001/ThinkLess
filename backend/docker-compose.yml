@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: notesdb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  notes-service:
+    build:
+      context: ./notes-service
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://admin:adminpass@db:5432/notesdb
+    ports:
+      - "5001:5000"
+    depends_on:
+      - db
+    volumes:
+      - ./notes-service:/app
+      - ./firebase_service_account.json:/app/firebase_service_account.json:ro
+
+  auth_service:
+    build:
+      context: ./auth_service
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./firebase_service_account.json:/etc/nginx/firebase_service_account.json:ro
+
+  api-gateway:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./firebase_service_account.json:/etc/nginx/firebase_service_account.json:ro
+    depends_on:
+      - notes-service
+      - auth_service
+
+volumes:
+  postgres_data:

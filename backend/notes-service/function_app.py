@@ -1,3 +1,5 @@
+# filepath: notes-service/function_app.py
+from functools import wraps
 from flask import Flask, request, jsonify
 from flasgger import Swagger
 from operations.notes_crud import (
@@ -7,8 +9,31 @@ from operations.notes_crud import (
     delete_note,
 )
 from database import init_db, engine
+import firebase_admin
+from firebase_admin import credentials, auth
 
 app = Flask(__name__)
+
+cred = credentials.Certificate("./firebase_service_account.json")
+firebase_admin.initialize_app(cred)
+
+
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth_header = request.headers.get("Authorization")
+        if not auth_header:
+            return jsonify({"message": "Token mancante"}), 401
+        try:
+            token = auth_header.split(" ").pop()
+            decoded = auth.verify_id_token(token)
+            request.user = decoded
+        except Exception as e:
+            return jsonify({"message": "Token non valido"}), 401
+        return f(*args, **kwargs)
+
+    return decorated
+
 
 swagger_template = {
     "swagger": "2.0",
@@ -28,8 +53,8 @@ swagger_config = {
         {
             "endpoint": "apispec_1",
             "route": "/apispec_1.json",
-            "rule_filter": lambda rule: True,  # all in
-            "model_filter": lambda tag: True,  # all in
+            "rule_filter": lambda rule: True,  # tutti inclusi
+            "model_filter": lambda tag: True,  # tutti inclusi
         }
     ],
     "static_url_path": "/flasgger_static",
@@ -68,6 +93,8 @@ def create_note_handler():
           properties:
             id:
               type: integer
+      401:
+        description: Token mancante o non valido
       500:
         description: Errore interno del server
     """
@@ -104,6 +131,8 @@ def get_all_notes_handler():
                 type: string
               updated_at:
                 type: string
+      401:
+        description: Token mancante o non valido
       500:
         description: Errore interno del server
     """
@@ -129,6 +158,7 @@ def get_all_notes_handler():
 
 
 @app.route("/notes/<int:id>", methods=["PUT"])
+@token_required
 def update_note_handler(id):
     """
     Aggiorna una nota esistente
@@ -162,6 +192,8 @@ def update_note_handler(id):
               type: string
             content:
               type: string
+      401:
+        description: Token mancante o non valido
       404:
         description: Nota non trovata
       500:
@@ -175,12 +207,13 @@ def update_note_handler(id):
                 jsonify({"id": note.id, "title": note.title, "content": note.content}),
                 200,
             )
-        return "Note not found", 404
+        return "Nota non trovata", 404
     except Exception as e:
         return str(e), 500
 
 
 @app.route("/notes/<int:id>", methods=["DELETE"])
+@token_required
 def delete_note_handler(id):
     """
     Elimina una nota
@@ -195,6 +228,8 @@ def delete_note_handler(id):
     responses:
       204:
         description: Nota eliminata con successo
+      401:
+        description: Token mancante o non valido
       404:
         description: Nota non trovata
       500:
@@ -203,7 +238,7 @@ def delete_note_handler(id):
     try:
         if delete_note(id):
             return "", 204
-        return "Note not found", 404
+        return "Nota non trovata", 404
     except Exception as e:
         return str(e), 500
 

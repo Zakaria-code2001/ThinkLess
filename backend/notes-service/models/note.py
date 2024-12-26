@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, Text, DateTime
+# models/note.py
+from sqlalchemy import Column, Integer, String, DateTime, Text
 from datetime import datetime
-from database import Base, engine
+from database import Base
 
 
 class Note(Base):
@@ -11,11 +12,3 @@ class Note(Base):
     content = Column(Text, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-
-
-def init_db():
-    Base.metadata.create_all(engine)
-
-
-if __name__ == "__main__":
-    init_db()

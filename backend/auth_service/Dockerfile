@@ -5,8 +5,7 @@ WORKDIR /app
 COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install gunicorn
 
 COPY . .
 
-CMD ["gunicorn", "function_app:app", "--bind", "0.0.0.0:7071"]
+CMD ["python", "auth_service.py"]

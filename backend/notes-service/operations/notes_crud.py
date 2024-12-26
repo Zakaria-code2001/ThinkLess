@@ -1,14 +1,6 @@
-import os
-
-from sqlalchemy import create_engine
-from sqlalchemy.orm import Session, sessionmaker
-
-from database import engine, Base
-from models.note import Note
-
-DATABASE_URL = os.getenv("DATABASE_URL")
-engine = create_engine(DATABASE_URL)
-SessionLocal = sessionmaker(bind=engine)
+# operations/notes_crud.py
+from database import SessionLocal
+from models import Note
 
 
 def create_note(title: str, content: str):
@@ -17,7 +9,7 @@ def create_note(title: str, content: str):
         note = Note(title=title, content=content)
         session.add(note)
         session.commit()
-        session.refresh(note)  # Aggiorna l’oggetto con l’ID dal DB
+        session.refresh(note)
         return note
     except Exception as e:
         session.rollback()
